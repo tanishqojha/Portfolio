@@ -44,8 +44,4 @@ Not interested in: CV-padding roles, endless meetings, or being a junior develop
 
 Email: tanishqojha10@gmail.com
 
-Twitter/X: [your handle]
-
-GitHub: [your repo]
-
 Let's talk if you're building something or looking for someone who can ship fast and think like an engineer.
