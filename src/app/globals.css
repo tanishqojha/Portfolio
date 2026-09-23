@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,39 +48,145 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ------------------------------------------------------------------
+   Stitch-ported pages (Home, About, Projects): exact tokens pulled
+   from the generated screens' own Tailwind config, namespaced so they
+   never collide with the shadcn tokens above (used by Contact, nav,
+   footer). See .stitch/DESIGN.md.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-stitch-background: #faf9f5;
+  --color-stitch-surface: #faf9f5;
+  --color-stitch-surface-bright: #faf9f5;
+  --color-stitch-surface-dim: #dbdad6;
+  --color-stitch-surface-variant: #e3e2df;
+  --color-stitch-surface-container: #efeeea;
+  --color-stitch-surface-container-low: #f4f4f0;
+  --color-stitch-surface-container-high: #e9e8e4;
+  --color-stitch-surface-container-highest: #e3e2df;
+  --color-stitch-surface-container-lowest: #ffffff;
+  --color-stitch-on-background: #1b1c1a;
+  --color-stitch-on-surface: #1b1c1a;
+  --color-stitch-on-surface-variant: #444933;
+  --color-stitch-primary: #506600;
+  --color-stitch-on-primary: #ffffff;
+  --color-stitch-primary-container: #ccff00;
+  --color-stitch-secondary: #5f5e5e;
+  --color-stitch-tertiary-fixed: #e3e3de;
+  --color-stitch-outline: #747a60;
+  --color-stitch-outline-variant: #c4c9ac;
+
+  --font-display-xl: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --text-display-xl: 72px;
+  --text-display-xl--line-height: 76px;
+  --text-display-xl--letter-spacing: -0.04em;
+  --text-display-xl--font-weight: 700;
+
+  --font-display-lg: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --text-display-lg: 56px;
+  --text-display-lg--line-height: 60px;
+  --text-display-lg--letter-spacing: -0.03em;
+  --text-display-lg--font-weight: 700;
+
+  --font-headline-lg: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --text-headline-lg: 36px;
+  --text-headline-lg--line-height: 42px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --font-headline-md: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 30px;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+
+  --font-headline-sm: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --text-headline-sm: 20px;
+  --text-headline-sm--line-height: 26px;
+  --text-headline-sm--font-weight: 600;
+
+  --font-body-lg: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --font-body-md: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --text-body-md: 15px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --font-body-sm: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+
+  --font-code-lg: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --text-code-lg: 14px;
+  --text-code-lg--line-height: 22px;
+  --text-code-lg--letter-spacing: -0.01em;
+  --text-code-lg--font-weight: 500;
+
+  --font-code-sm: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --text-code-sm: 12px;
+  --text-code-sm--line-height: 18px;
+  --text-code-sm--font-weight: 500;
+
+  --font-label-caps: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --text-label-caps: 11px;
+  --text-label-caps--line-height: 16px;
+  --text-label-caps--letter-spacing: 0.08em;
+  --text-label-caps--font-weight: 700;
+}
+
+/* Material Symbols icon font used by the Stitch-ported pages. */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Kinetic Neo-Brutalist Developer System — see .stitch/DESIGN.md */
+  --background: #fcfbf7;
+  --foreground: #0a0a0a;
+  --card: #fcfbf7;
+  --card-foreground: #0a0a0a;
+  --popover: #fcfbf7;
+  --popover-foreground: #0a0a0a;
+  --primary: #ccff00;
+  --primary-foreground: #0a0a0a;
+  --secondary: #0a0a0a;
+  --secondary-foreground: #fcfbf7;
+  --muted: #f4f3ee;
+  --muted-foreground: #5f5e5e;
+  --accent: #ccff00;
+  --accent-foreground: #0a0a0a;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #0a0a0a;
+  --input: #0a0a0a;
+  --ring: #ccff00;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0px;
+  --sidebar: #fcfbf7;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #ccff00;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #f4f3ee;
+  --sidebar-accent-foreground: #0a0a0a;
+  --sidebar-border: #0a0a0a;
+  --sidebar-ring: #ccff00;
 }
 
 .dark {
@@ -128,7 +234,7 @@
   html {
     @apply font-sans;
   }
-  /* Headings: Manrope 600-700. Body: Manrope 400-500. */
+  /* Headings: Space Grotesk 600-700. Body: Inter 400-500. */
   h1,
   h2,
   h3,
@@ -136,124 +242,6 @@
   h5,
   h6 {
     font-family: var(--font-heading);
-    font-weight: 600;
+    font-weight: 700;
   }
-}
-/* ------------------------------------------------------------------
-   Parallax scrolling component (src/components/ui/parallax-scrolling)
-   ------------------------------------------------------------------ */
-
-.parallax {
-  --parallax-bg: #0e100f;
-  --parallax-fg: #efeeec;
-
-  position: relative;
-  width: 100%;
-  background-color: var(--parallax-bg);
-  color: var(--parallax-fg);
-}
-
-.parallax__header {
-  position: relative;
-  width: 100%;
-  height: 100svh;
-}
-
-.parallax__visuals {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Solid bar pinned to the bottom edge of the visuals. Hides the seam the
-   layers expose as they translate away from the content section. */
-.parallax__black-line-overflow {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  z-index: 3;
-  height: 10svh;
-  background-color: var(--parallax-bg);
-  pointer-events: none;
-}
-
-.parallax__layers {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Every layer is overscanned vertically so a translated layer never reveals
-   the background at the top of the frame mid-scrub. */
-.parallax__layer-img,
-.parallax__layer-title {
-  position: absolute;
-  top: -10%;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  will-change: transform;
-}
-
-.parallax__layer-img {
-  object-fit: cover;
-  object-position: center center;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.parallax__layer-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.5rem;
-}
-
-.parallax__title {
-  margin: 0;
-  font-size: clamp(3.5rem, 14vw, 13rem);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  text-align: center;
-  text-wrap: balance;
-  color: var(--parallax-fg);
-}
-
-/* Gradient that dissolves the hero into the content section below. */
-.parallax__fade {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 4;
-  height: 45svh;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(14, 16, 15, 0) 0%,
-    rgba(14, 16, 15, 0.6) 55%,
-    var(--parallax-bg) 100%
-  );
-  pointer-events: none;
-}
-
-.parallax__content {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100svh;
-  padding: 6rem 1.5rem;
-  background-color: var(--parallax-bg);
-}
-
-.parallax__icon {
-  width: clamp(3rem, 9vw, 7rem);
-  height: auto;
-  color: var(--parallax-fg);
 }
