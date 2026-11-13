@@ -1,46 +1,45 @@
-export const metadata = { title: "Contact — Tanishq Ojha" };
+import { ContactHero } from "@/components/contact-hero";
+import { ContactForm } from "@/components/contact-form";
+import { DrawingFilm } from "@/components/drawing-film";
+import { socials } from "@/lib/socials";
 
-const email = "tanishqojha10@gmail.com";
-
-const socials = [
-  { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "X", href: "#" },
-];
+export const metadata = { title: "Contact · Tanishq Ojha" };
 
 export default function ContactPage() {
+  const links = socials.filter((s) => s.label !== "Email");
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 pb-24 pt-40 md:pt-48">
-      <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
-        Contact
-      </p>
-      <h1 className="mt-4 text-5xl font-bold tracking-tighter text-foreground md:text-7xl">
-        Let&apos;s talk
-      </h1>
-      <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-        Open to new projects and opportunities. Reach out and I&apos;ll get
-        back to you.
-      </p>
+    <main className="mx-auto w-full max-w-7xl overflow-x-clip px-4 pb-24 pt-36 md:pt-48 lg:px-6">
+      <ContactHero />
 
-      <a
-        href={`mailto:${email}`}
-        className="mt-10 inline-flex items-center border-[2.5px] border-foreground bg-primary px-6 py-3 font-mono text-sm font-bold text-primary-foreground shadow-[4px_4px_0_0_var(--foreground)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-1 active:translate-y-1 active:shadow-none"
-      >
-        {email}
-      </a>
+      <section className="mt-24 grid items-start gap-10 lg:grid-cols-[1.5fr_1fr]">
+        <div data-reveal>
+          <ContactForm />
+        </div>
+        <div data-reveal style={{ "--i": 1 } as React.CSSProperties} className="flex flex-col gap-8">
+          <p className="max-w-[40ch] text-lg leading-relaxed text-steel">
+            Hiring for an AI role, building something with LLMs, or stuck on an agent that keeps going off the rails? Tell me about it.
+          </p>
+          <ul className="border-[3px] border-ink bg-chalk shadow-[8px_8px_0_var(--color-ink)]">
+            {links.map((s) => (
+              <li key={s.label} className="border-b-[3px] border-ink last:border-b-0">
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group flex items-center justify-between px-6 py-5 text-2xl font-bold uppercase hover:bg-ink hover:text-chalk"
+                >
+                  {s.label}
+                  <span aria-hidden className="text-ember transition-transform duration-300 group-hover:-rotate-45">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-      <ul className="mt-14 flex flex-wrap gap-3">
-        {socials.map((social) => (
-          <li key={social.label}>
-            <a
-              href={social.href}
-              className="inline-block rounded-full border-2 border-foreground bg-muted px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-foreground shadow-[2px_2px_0_0_var(--foreground)] transition-colors hover:bg-foreground hover:text-background"
-            >
-              {social.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div data-reveal className="mt-24">
+        <DrawingFilm src="/dw/scene-social-button.js" scrollFx className="border-[3px] border-ink bg-white shadow-[8px_8px_0_var(--color-ink)]" />
+      </div>
     </main>
   );
 }
